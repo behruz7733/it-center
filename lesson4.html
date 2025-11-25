@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typing Test — Lesson 4</title>
+<style>
+    body {
+        background: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #4da3ff;
+    }
+
+    #textToType {
+        width: 80%;
+        margin: 20px auto;
+        font-size: 24px;
+        line-height: 38px;
+        letter-spacing: 1px;
+        color: #aaa;
+    }
+
+    .correct {
+        color: white;
+    }
+
+    .incorrect {
+        color: red;
+    }
+
+    #inputArea {
+        width: 80%;
+        height: 120px;
+        margin-top: 25px;
+        font-size: 22px;
+        padding: 10px;
+        background: #111;
+        border: 2px solid #4da3ff;
+        color: white;
+        outline: none;
+    }
+
+    select, button {
+        font-size: 18px;
+        padding: 8px 12px;
+        margin: 10px;
+        background: #4da3ff;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    #timer {
+        font-size: 26px;
+        margin-top: 15px;
+        color: #4da3ff;
+    }
+</style>
+</head>
+<body>
+
+<h1>Тайпинг тест</h1>
+
+<label>Выбери время:</label>
+<select id="timeSelect">
+    <option value="30">30 секунд</option>
+    <option value="60">60 секунд</option>
+    <option value="90">90 секунд</option>
+</select>
+
+<button onclick="startTest()">Начать</button>
+
+<div id="timer"></div>
+
+<div id="textToType"></div>
+
+<textarea id="inputArea" disabled placeholder="Нажми 'Начать' чтобы писать..."></textarea>
+
+<script>
+const texts = [
+    "Сегодня мы будем учиться печатать быстро и без ошибок.",
+    "HTML используется чтобы создавать структуру сайтов.",
+    "JavaScript делает сайты живыми и интерактивными.",
+    "CSS отвечает за внешний вид и оформление страниц."
+];
+
+let timeLeft = 0;
+let timerInterval;
+let currentText = "";
+
+function startTest() {
+    
+    currentText = texts[Math.floor(Math.random() * texts.length)];
+    document.getElementById("textToType").innerHTML = highlightText("");
+
+  
+    timeLeft = parseInt(document.getElementById("timeSelect").value);
+    document.getElementById("timer").innerText = "⏳ " + timeLeft + " сек";
+
+    
+    const input = document.getElementById("inputArea");
+    input.value = "";
+    input.disabled = false;
+    input.focus();
+
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").innerText = "⏳ " + timeLeft + " сек";
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            input.disabled = true;
+            document.getElementById("timer").innerText = "⏳ Время вышло!";
+        }
+    }, 1000);
+
+    input.oninput = () => {
+        const typed = input.value;
+        document.getElementById("textToType").innerHTML = highlightText(typed);
+    };
+}
+
+function highlightText(typed) {
+    let html = "";
+    for (let i = 0; i < currentText.length; i++) {
+        if (i < typed.length) {
+            if (typed[i] === currentText[i]) {
+                html += `<span class="correct">${currentText[i]}</span>`;
+            } else {
+                html += `<span class="incorrect">${currentText[i]}</span>`;
+            }
+        } else {
+            html += `<span>${currentText[i]}</span>`;
+        }
+    }
+    return html;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">IT Center</h2>
+    <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="lessons.html">Бесплатный урок</a></li>
+        <li><a href="lesson1.html">HTML</a></li>
+        <li><a href="lesson2.html">CSS</a></li>
+        <li><a href="lesson3.html" class="active">JS</a></li>
+    </ul>
+</nav>
+
+<div class="content">
+    <h1>Урок JavaScript</h1>
+
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Code Example</title>
+<style>
+    body {
+        background: #000;
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        color: white;
+    }
+
+    .code-box {
+        background: #111;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 20px;
+        position: relative;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .copy-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #00aaff;
+        border: none;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+        color: white;
+        font-size: 14px;
+    }
+
+    pre {
+        margin-top: 40px;
+        overflow-x: auto;
+        color: #e0e0e0;
+        font-size: 16px;
+    }
+    .kw { color: #4da3ff; }
+    .fn { color: #3bd67f; }
+    .num { color: #ffdd66; }
+    .cmt { color: #777; }
+</style>
+</head>
+<body>
+
+<h2>Example</h2>
+
+<div class="code-box">
+    <button class="copy-btn" onclick="copyCode()">Copy</button>
+
+<pre id="code">
+<span class="kw">function</span><span class="kw">*</span> <span class="fn">myStream</span>() {
+    <span class="cmt">// return {value:1, done:false}</span>
+    <span class="kw">yield</span> <span class="num">1</span>;
+
+    <span class="cmt">// return {value:2, done:false}</span>
+    <span class="kw">yield</span> <span class="num">2</span>;
+
+    <span class="cmt">// return {value:3, done:true}</span>
+    <span class="kw">return</span> <span class="num">3</span>;
+}
+
+<span class="cmt">// Create a Generator</span>
+<span class="kw">let</span> myGenerator = <span class="fn">myStream</span>();
+
+<span class="cmt">// Iterate over the Generator</span>
+<span class="kw">for</span> (<span class="kw">let</span> value <span class="kw">of</span> myGenerator) {
+    <span class="cmt">// code</span>
+}
+</pre>
+</div>
+
+<script>
+function copyCode() {
+    const text = document.getElementById("code").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Скопировано!");
+}
+</script>
+
+</body>
+</html>

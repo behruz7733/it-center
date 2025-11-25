@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">IT Center</h2>
+    <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="lessons.html">Бесплатный урок</a></li>
+        <li><a href="lesson1.html">HTML</a></li>
+        <li><a href="lesson2.html" class="active">CSS</a></li>
+        <li><a href="lesson3.html">JS</a></li>
+    </ul>
+</nav>
+
+<div class="content">
+    <h1>Урок CSS</h1>
+</div>
+
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Exercise</title>
+<style>
+    body {
+        background-color: #2b3643;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+        padding-top: 40px;
+    }
+
+    .exercise-box {
+        background-color: #3a4654;
+        width: 600px;
+        padding: 20px;
+        margin: 0 auto 25px auto;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    .dropzone {
+        background-color: #2b3643;
+        padding: 5px 30px;
+        border-radius: 6px;
+        display: inline-block;
+        border: 2px dashed #556;
+        min-width: 150px;
+    }
+
+    .option {
+        background-color: #4b5563;
+        padding: 8px 15px;
+        border-radius: 6px;
+        margin: 5px;
+        display: inline-block;
+        cursor: grab;
+    }
+
+    .button {
+        background-color: #11c26d;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-size: 18px;
+        border: none;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Exercise</h2>
+<p>Drag the correct property to set a green background color for a div element.</p>
+
+<div class="exercise-box">
+    div { <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<span class="dropzone" id="dropzone"></span>: green;<br>
+    }
+</div>
+
+
+<div>
+    <span class="option" draggable="true">bg-color</span>
+    <span class="option" draggable="true">color</span>
+    <span class="option" draggable="true">opacity</span>
+    <span class="option" draggable="true">background-color</span>
+</div>
+
+<button class="button" onclick="checkAnswer()">Submit Answer »</button>
+
+<script>
+let dragged;
+
+
+document.addEventListener("dragstart", e => {
+    if (e.target.classList.contains("option")) {
+        dragged = e.target;
+    }
+});
+
+
+dropzone.addEventListener("dragover", e => e.preventDefault());
+
+
+dropzone.addEventListener("drop", e => {
+    e.preventDefault();
+    dropzone.textContent = dragged.textContent;
+});
+
+
+function checkAnswer() {
+    const answer = dropzone.textContent.trim();
+    if (answer === "background-color") {
+        alert("✔ Correct!");
+    } else {
+        alert("✘ Incorrect. Try again!");
+    }
+}
+</script>
+
+</body>
+</html>

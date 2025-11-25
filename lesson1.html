@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок HTML</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2 class="logo">IT Center</h2>
+    <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="lessons.html">Бесплатный урок</a></li>
+        <li><a href="lesson1.html" class="active">HTML</a></li>
+        <li><a href="lesson2.html">CSS</a></li>
+        <li><a href="lesson3.html">JS</a></li>
+    </ul>
+</nav>
+
+<div class="content">
+    <h1>Урок HTML</h1>
+</div>
+<div class="example-box">
+    <div class="example-header">
+        <span>Example</span>
+        <button class="copy-btn" onclick="copyCode()">Copy</button>
+    </div>
+
+    <pre><code id="code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;This is a Heading&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+</div>
+
+<script>
+function copyCode() {
+    let text = document.getElementById("code").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Скопировано!");
+}
+</script>
+<div class="example-box">
+    <div class="example-header">
+        <span>Example</span>
+        <button class="copy-btn" onclick="copyCode2()">Copy</button>
+    </div>
+
+    <pre><code id="code2">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;My First Heading&lt;/h1&gt;
+    &lt;p&gt;My First Paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+</div>
+
+<script>
+function copyCode2() {
+    let text = document.getElementById("code2").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Скопировано!");
+}
+</script>
+
+</body>
+</html>
